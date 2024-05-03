@@ -15,9 +15,23 @@
             <div class="row">
                 <center>
                     <div class="col-8">
-                        form
                         <br><br>
+                        <form method="POST" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                              
+                              <input type="text" class="form-control" name="username" placeholder="Enter your username" >
+                            </div>
+                            <div class="mb-3">
+                              <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                            </div><br><br>
+                            <button type="submit" class="btn btn-decondary">Login</button>
+                          </form>
 
+                        <br><br>
+                        <br><br>
+                        <br><br>
+                        <br><br>
                         <br><br>
                         <br><br>
                         <br><br>
