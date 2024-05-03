@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 def home(request):
     products = Product.objects.all()
