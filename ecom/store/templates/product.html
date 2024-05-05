@@ -3,23 +3,56 @@
 
 
         <div class="container">
-            <div class="row">
-                <center>
-                    <div class="col-8">
-                        <br><br>
-                        <p align = "justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec molestie ante, eu tempor neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in ornare tortor, non pellentesque purus. Curabitur finibus, velit elementum ornare accumsan, lorem turpis lacinia massa, at pharetra sapien urna a leo. Donec faucibus, eros vitae luctus elementum, elit nulla posuere magna, vel congue turpis nisi sed massa. Vivamus vitae ultricies risus. Proin non ullamcorper ipsum, ac facilisis magna. Proin eget finibus nibh, eget semper risus. Etiam blandit tincidunt mi quis dictum. Sed mollis aliquet eleifend. Nam condimentum fermentum eros, feugiat pretium nibh. In id ultricies sapien. Vivamus finibus pulvinar est. In a elit id urna consequat tincidunt at ac ex. Duis mattis ligula et quam ultricies, eget rhoncus odio imperdiet. Interdum et malesuada fames ac ante ipsum primis in faucibus.<br><br>
+            <br>
+            <div class="card mb-3" >
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                        <center>
 
-Etiam aliquam consequat malesuada. Quisque ultrices lectus sit amet ex fringilla ullamcorper. Ut id auctor velit. Ut lobortis posuere lacus vel lacinia. Suspendisse nec libero maximus, tempor turpis eget, interdum nunc. Vivamus porttitor, quam eget maximus consequat, augue justo mattis quam, sed malesuada nunc elit ut magna. Vestibulum et nulla sodales, volutpat sem faucibus, interdum purus. Mauris eros erat, malesuada mattis risus in, viverra bibendum dui.<br><br>
-
-Aliquam erat volutpat. Aliquam ut dolor ultrices, maximus libero sed, porttitor orci. Integer sed massa nisl. Morbi sit amet dignissim justo. Aliquam vitae mattis justo. Cras erat magna, tempus nec dolor a, condimentum sagittis est. Cras interdum aliquet augue, id molestie tellus eleifend ac. Ut dictum consequat neque, a ornare tortor dapibus ut. Pellentesque sodales commodo sodales. Quisque vestibulum, arcu ac interdum interdum, purus erat auctor elit, et vestibulum orci metus eget metus. Phasellus dignissim, mi eu semper tincidunt, felis nisi eleifend justo, ac pretium mauris odio id turpis. Vivamus luctus malesuada erat sed blandit. Aliquam sollicitudin libero leo, a posuere turpis bibendum vel.<br><br>
-                        </p>
+                        
+                      <h5 class="card-title">{{ product.name }}</h5>
+                      <p class="card-text">{{ product.description }}</p>
+                      {% if product.is_sale %}
+                      <div class="d-flex justify-content-center small text-warning mb-2">
+                        <div class="bi-star-fill"></div>
+                        &nbsp;&nbsp;Sale!&nbsp;&nbsp;
+                        <div class="bi-star-fill"></div>
+    
                     </div>
-                </center>
+    
+                    <!-- Product price-->
+                    <strike>${{ product.price }}</strike>  ${{ product.sale_price }}
 
-            </div>
+
+                       {% else %}
+                        ${{ product.price }}
+
+                      {% endif %}
+
+                   <br><br><br><br>
+
+                      <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+
+                    </center>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
         </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 {% endblock %}
