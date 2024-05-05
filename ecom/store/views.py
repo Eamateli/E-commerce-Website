@@ -10,8 +10,8 @@ from django import forms
 
 
 def product(request, pk):
-    products = Product.objects.get(id=pk)
-    return render(request, 'product.html', {'products':products})
+    product = Product.objects.get(id=pk)
+    return render(request, 'product.html', {'product':product})
     
     
 
