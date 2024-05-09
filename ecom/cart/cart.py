@@ -4,7 +4,8 @@ from store.models import Product
 class Cart():
     def __init__(self, request):
         self.session = request.session
-        
+        # Get request
+        self.request = request
         # Get the current session key if it exists
         cart = self.session.get('session_key')
         
@@ -16,7 +17,7 @@ class Cart():
         # Make sure cart is available on all pages of site
         self.cart = cart 
     
-    def add(self, product):
+    def add(self, product,quantity):
         product_id = str(product.id)
         product_qty = str(quantity)
         
