@@ -20,7 +20,7 @@ def cart_add(request):
         # lookup product in db
         product = get_object_or_404(Product, id=product_id)
         # Save to a session
-        cart.add(product=product)
+        cart.add(product=product, quantity=product_qty)
         
         # Get cart quantity
         cart_quantity = cart.__len__()
