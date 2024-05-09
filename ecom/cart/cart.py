@@ -31,11 +31,11 @@ class Cart():
         return len(self.cart)
     
     
-    def get_prod(self):
+    def get_prods(self):
         # Get Ids from cart
         product_ids = self.cart.keys()
         #Use Ids to look prodcuts in a database model
-        products = Products.objects.filter(id_in=product_ids)
+        products = Product.objects.filter(id__in=product_ids)
         
         return products 
         
