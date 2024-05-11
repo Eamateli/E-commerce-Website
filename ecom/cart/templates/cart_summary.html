@@ -15,8 +15,9 @@
 
           <br/>
             {%  if cart_products %}
+            <h3>Total: ${{ totals }}</h3><br>
             {% for product in cart_products %}
-            <h3>Total:</h3><br>
+            
             <div class="card mb-3" >
                 <div class="row g-0">
                   <div class="col-md-4">
