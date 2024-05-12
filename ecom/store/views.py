@@ -9,7 +9,8 @@ from django import forms
 
 
 def category_summary(request):
-    return render(request, 'category_summary.html', {})
+    categories = Category.objects.all()
+    return render(request, 'category_summary.html', {"categories":categories})
     
     
 
