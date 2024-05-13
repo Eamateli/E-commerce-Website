@@ -8,6 +8,11 @@ from .forms import SignUpForm
 from django import forms
 
 
+def update_user(request):
+    return render(request, 'update_user.html', {})
+    
+    
+
 def category_summary(request):
     categories = Category.objects.all()
     return render(request, 'category_summary.html', {"categories":categories})
@@ -25,11 +30,7 @@ def category(request,foo):
         
         messages.success(request,("That category doesn't exist..."))
         return redirect('home')
-        
-        
-    
-    
-    
+          
 
 def product(request, pk):
     product = Product.objects.get(id=pk)
