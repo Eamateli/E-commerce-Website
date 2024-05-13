@@ -14,9 +14,9 @@ def update_user(request):
         user_form = UpdateUserForm(request.POST or None, instance = current_user)
         
         if user_form.is_valid():
-            user_fomr.save()
+            user_form.save()
             login(request, current_user)
-            messages.success(request, "Your details have been uupdated!")
+            messages.success(request, "Your details have been updated!")
             return redirect('home')
         return render(request, "update_user.html", {'user_form': user_form})
     else:
