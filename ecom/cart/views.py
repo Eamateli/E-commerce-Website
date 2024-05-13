@@ -31,6 +31,7 @@ def cart_add(request):
         # Retrun a response
         # response = JsonResponse({'Product Name: ' : product.name })
         response = JsonResponse({'qty': cart_quantity})
+        messages.success(request,("Product added to cart.. "))
         return response
 
 def cart_delete(request):
