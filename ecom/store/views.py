@@ -9,7 +9,13 @@ from django import forms
 
 
 def search(request):
-    return render(request, "search.html", {})
+    #Detirmine if they fille dout the form
+    if request.method == "POST":
+        searched = request.POST['searched']
+        return render(request, "search.html", {'searched':searched})
+        
+    else:
+        return render(request, "search.html", {})
 
 
 
