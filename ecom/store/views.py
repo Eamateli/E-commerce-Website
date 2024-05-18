@@ -12,6 +12,8 @@ def search(request):
     #Detirmine if they fille dout the form
     if request.method == "POST":
         searched = request.POST['searched']
+        #Querry the products db model
+        searched = Product.objects.filter(name__icontains=searched)
         return render(request, "search.html", {'searched':searched})
         
     else:
