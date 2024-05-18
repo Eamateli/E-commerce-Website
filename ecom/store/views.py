@@ -12,14 +12,14 @@ from django.db.models import Q
 def search(request):
     #Detirmine if they fille dout the form
     if request.method == "POST":
-        searched = request.POST['searched']
+        searched = request.POST['searched'].strip()
         #Querry the products db model
-        searched = Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
+        results = Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
         if not searched:
             messages.success(request, "That product was not found! Please try again.")
             return render(request, "search.html", {})
         else:
-            return render(request, "search.html", {'searched':searched})
+            return render(request, "search.html", {'searched':results})
         
     else:
         return render(request, "search.html", {})
