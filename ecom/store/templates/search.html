@@ -30,13 +30,16 @@
                                 </form><br><br>
                             </div>
                           </div><br>
-                          {% if searched %}
-                          You searched for ... {{ searched }}
-
-                        {% endif %}
-                          <br><br><br>
+ 
 
                     </div>
+                    {% if searched %}
+                    {% for product in searched %}
+                    {{ product }}
+
+                    {% endfor %}
+                  {% endif %}
+                    <br><br><br>
                 </center><br><br><br>
 
             </div>
