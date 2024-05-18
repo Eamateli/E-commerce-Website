@@ -27,10 +27,15 @@
                                         <input type="text" class="form-control"  placeholder="Search" name="searched">
                                       </div>
                                       <button type="submit" class="btn btn-secondary">Search Products</button>
-                                </form>
+                                </form><br><br>
                             </div>
-                          </div>
+                          </div><br>
+                          {% if searched %}
+                          You searched for ... {{ searched }}
+
+                        {% endif %}
                           <br><br><br>
+
                     </div>
                 </center><br><br><br>
 
