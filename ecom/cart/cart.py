@@ -18,6 +18,28 @@ class Cart():
         # Make sure cart is available on all pages of site
         self.cart = cart 
     
+    def db_add(self, product, quantity):
+        product_id = str(product.id)
+        product_qty = str(quantity)
+        
+        if product_id in self.cart:
+            pass
+        else:
+            # self.cart[product_id] = {'price': str(product.price)}
+            self.cart[product_id] = int(product_qty)
+            
+        
+        self.session.modified = True
+        
+        if self.request.user.is_authenticated:
+            current_user = Profile.objects.filter(user__id=self.request.user.id)
+            carty = str(self.cart)
+            carty = carty.replace("\'", "\"")
+            current_user.update(old_cart=(carty))
+        
+    
+    
+    
     def add(self, product,quantity):
         product_id = str(product.id)
         product_qty = str(quantity)
