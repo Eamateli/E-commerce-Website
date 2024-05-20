@@ -104,8 +104,15 @@ class Cart():
         
         self.session.modified = True
         
+        if self.request.user.is_authenticated:
+            current_user = Profile.objects.filter(user__id=self.request.user.id)
+            carty = str(self.cart)
+            carty = carty.replace("\'", "\"")
+            current_user.update(old_cart=(carty))
+        
         thing = self.cart
-        return thing 
+        return thing
+     
     
     def delete(self, product):
         product_id = str(product)
