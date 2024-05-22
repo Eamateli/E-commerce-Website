@@ -30,21 +30,28 @@ def search(request):
 
 
 def update_info(request):
-    if request.user.is_authenticated:
-        current_user = Profile.objects.get(user__id=request.user.id)
-        shipping_user = ShippingAddress.objects.get(id=request.user.id)
-        form = UserInfoForm(request.POST or None, instance = current_user)
-        shipping_form = ShippingForm(request.POST or None, instance=shipping_user)
-        
-        if form.is_valid():
-            form.save()
-            
-            messages.success(request, "Your info have been updated!")
-            return redirect('home')
-        return render(request, 'update_info.html', {'form': form, 'shipping_form':shipping_form})
-    else:
-        messages.success(request, "Your must be logged in to access that page!")
-        return redirect('home')
+	if request.user.is_authenticated:
+		# Get Current User
+		current_user = Profile.objects.get(user__id=request.user.id)
+		# Get Current User's Shipping Info
+		shipping_user, created = ShippingAddress.objects.get_or_create(user__id=request.user.id)
+		
+		# Get original User Form
+		form = UserInfoForm(request.POST or None, instance=current_user)
+		# Get User's Shipping Form
+		shipping_form = ShippingForm(request.POST or None, instance=shipping_user)		
+		if form.is_valid() or shipping_form.is_valid():
+			# Save original form
+			form.save()
+			# Save shipping form
+			shipping_form.save()
+
+			messages.success(request, "Your Info Has Been Updated!!")
+			return redirect('home')
+		return render(request, "update_info.html", {'form':form, 'shipping_form':shipping_form})
+	else:
+		messages.success(request, "You Must Be Logged In To Access That Page!!")
+		return redirect('home')
     
 
 
