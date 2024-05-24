@@ -18,6 +18,29 @@
                               Order Summary
                             </div>
                             <div class="card-body">
+                            {% for product in cart_products %}
+                              {{product.name}}:
+
+                              {% if product.is_sale %}
+                              $<strong>{{product.sale_price}}</strong> 
+                              {% else %}
+                              $<strong>{{product.price}}</strong>
+
+
+                              {% endif %}
+                              <br>
+                              <small>Quantity:
+                              {% for key, value in quantities.items %}
+                                 {% if key == product.id|slugify %}
+                                 <strong>{{ value }}</strong>
+                                 {% endif %}
+                          {% endfor %}
+
+                            {% endfor %}</small>
+                               <br><br>
+
+
+
 
                             </div>
                           </div>
