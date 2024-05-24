@@ -39,14 +39,25 @@
                             {% endfor %}</small>
                                <br><br>
                                <strong>Total: </strong>${{ totals }}
+                               <br><br><br>
+                               <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">Update Product</a>
+
 
 
 
                             </div>
                           </div>
                           <br>
-
-
+                          <div class="card">
+                            <div class="card-header">
+                              Shipping Info
+                            </div>
+                            <div class="card-body">
+                                {{shipping_form.as_p}}
+                                {% csrf_token %}
+                            </div>
+                          </div>
+                           <a href="#" class="btn btn-secondary">Continue to billing</a>
 
         </div>
         </div>
