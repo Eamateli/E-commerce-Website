@@ -53,8 +53,9 @@
                               Shipping Info
                             </div>
                             <div class="card-body">
-                                {{shipping_form.as_p}}
                                 {% csrf_token %}
+                                {{shipping_form.as_p}}
+                                
                             </div>
                           </div>
                            <a href="#" class="btn btn-secondary">Continue to billing</a>
