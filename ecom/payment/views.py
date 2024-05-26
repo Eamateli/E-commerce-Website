@@ -13,7 +13,7 @@ def billing_info(request):
         totals = cart.cart_total()
         #Is user logged in 
         if request.user.is_authenticated:
-            return render(request, "payment/checkout.html", {"cart_products":cart_products, "quantities":quantities, "totals":totals, "shipping_info":request.POST})
+            return render(request, "payment/billing_info.html", {"cart_products":cart_products, "quantities":quantities, "totals":totals, "shipping_info":request.POST})
 
         else:
             pass
