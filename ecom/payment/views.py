@@ -5,12 +5,34 @@ from .models import ShippingAddress
 from django.contrib import messages
 
 
+def process_order(request):
+    if request.POST:
+        #Get billing info
+        payment_form = PaymentForm(request.POST or None)
+        #GEt shiping session data
+        my_shipping = request.session.get('my_shipping')
+        print(my_shipping)
+        messages.success(request, "Order Placed")
+        return redirect ('home')
+        
+        
+        
+        
+    else:
+        messages.success(request, "Access Denied")
+        return redirect ('home')
+        
+
+
 def billing_info(request):
     if request.POST:
         cart = Cart(request)
         cart_products = cart.get_prods
         quantities = cart.get_quants    
         totals = cart.cart_total()
+        #Creat a session with Shipping info
+        my_shipping = request.POST
+        request.session['my_shipping'] = my_shipping
         #Is user logged in 
         if request.user.is_authenticated:
             billing_form = PaymentForm()
