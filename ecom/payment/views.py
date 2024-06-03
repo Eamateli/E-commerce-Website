@@ -1,21 +1,45 @@
 from django.shortcuts import render, redirect
 from cart.cart import Cart
 from payment.forms import ShippingForm, PaymentForm
-from .models import ShippingAddress
+from payment.models import ShippingAddress, Order, OrderItem
+from django.contrib.auth.models import User
 from django.contrib import messages
 
 
 def process_order(request):
     if request.POST:
+        cart = Cart(request)
+        cart_products = cart.get_prods
+        quantities = cart.get_quants    
+        totals = cart.cart_total()
         #Get billing info
         payment_form = PaymentForm(request.POST or None)
-        #GEt shiping session data
+        #Get shipping session data
         my_shipping = request.session.get('my_shipping')
-        print(my_shipping)
-        messages.success(request, "Order Placed")
-        return redirect ('home')
+        #Gather order info
+        full_name = my_shipping['shipping_full_name']
+        email = my_shipping['shipping_email']
         
         
+        #Create shipping address from session info 
+        shipping_address = f"{my_shipping['shipping_address1']}\n{my_shipping['shipping_address2']}\n{my_shipping['shipping_city']}\n{my_shipping['shipping_state']}\n{my_shipping['shipping_zipcode']}\n{my_shipping['shipping_country']}"
+        amount_paid = totals
+        
+        #Create order
+        if request.user.is_authenticated:
+            user = request.user
+            create_order = Order(user=user, full_name=full_name, email=email, shipping_address=shipping_address, amount_paid=amount_paid)
+            create_order.save()
+            
+            messages.success(request, "Order Placed!")
+            return redirect ('home')
+            
+        else:
+            create_order = Order(full_name=full_name, email=email, shipping_address=shipping_address, amount_paid=amount_paid)
+            create_order.save()
+            
+            messages.success(request, "Order Placed!")
+            return redirect ('home')
         
         
     else:
