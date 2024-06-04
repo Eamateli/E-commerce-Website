@@ -42,7 +42,10 @@ def process_order(request):
                 else:
                     price = product.price
                     
-                       #Get quantity 
+            for key,value in quantities().items(): #Get quantity 
+                if int(key) == product.id:
+                    create_order_item = OrderItem(order_id=order_id, product_id=product_id, user=user, quantity=value, price=price)
+                    
                 
             
             
