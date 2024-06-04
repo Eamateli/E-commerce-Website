@@ -4,6 +4,7 @@ from payment.forms import ShippingForm, PaymentForm
 from payment.models import ShippingAddress, Order, OrderItem
 from django.contrib.auth.models import User
 from django.contrib import messages
+from store.models import Product
 
 
 def process_order(request):
@@ -33,8 +34,11 @@ def process_order(request):
             
             
             #Add order items
-            #Get order id
-            order_id = create_order.pk
+            order_id = create_order.pk #Get order info
+            for product in cart_products():
+                product_id = prodcut.id  #Get product id
+                
+                
             
             
             messages.success(request, "Order Placed!")
