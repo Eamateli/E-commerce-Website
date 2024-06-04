@@ -36,7 +36,7 @@ def process_order(request):
             #Add order items
             order_id = create_order.pk #Get order info
             for product in cart_products():
-                product_id = prodcut.id  #Get product id
+                product_id = product.id  #Get product id
                 if product.is_sale:  #Get product price
                     price = product.sale_price
                 else:
