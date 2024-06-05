@@ -13,6 +13,7 @@ class OrderItemInline(admin.StackedInline):              # Create an OrderItem I
     
 class OrderAdmin(admin.ModelAdmin):                      #Extend our Order Model
     model = Order
+    readonly_fields = ["date_ordered"]
     inlines = [OrderItemInline]
     
     
