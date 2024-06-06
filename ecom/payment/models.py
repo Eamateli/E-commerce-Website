@@ -48,6 +48,7 @@ class Order(models.Model):
     amount_paid = models.DecimalField(max_digits=10, decimal_places=2)
     date_ordered = models.DateTimeField(auto_now_add=True)
     shipped = models.BooleanField(default=False)
+    date_shipped = models.DateTimeField(blank=True, null=True)
     
     def __str__(self):
         return f"Order - {str(self.id)}"
