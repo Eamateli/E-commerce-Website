@@ -7,6 +7,13 @@ from django.contrib import messages
 from store.models import Product
 
 
+def not_shipped_dash(request):
+    pass
+
+def shipped_dash(request):
+    pass
+
+
 def process_order(request):
     if request.POST:
         cart = Cart(request)
