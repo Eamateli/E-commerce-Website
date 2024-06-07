@@ -8,10 +8,21 @@ from store.models import Product
 
 
 def not_shipped_dash(request):
-    pass
+    
+    
+    return render(request, "payment/not_shipped_dash.html", {})
+    
+    
+    messages.success(request, "Order Placed!")
+    return redirect ('home')
 
 def shipped_dash(request):
-    pass
+    
+    return render(request, "payment/shipped_dash.html", {})
+    
+    
+    messages.success(request, "Order Placed!")
+    return redirect ('home')
 
 
 def process_order(request):
