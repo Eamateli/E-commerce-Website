@@ -7,6 +7,9 @@ from django.contrib import messages
 from store.models import Product
 
 
+def orders(request):
+    pass
+
 
 def not_shipped_dash(request):
     if request.user.is_authenticated and request.user.is_superuser:
