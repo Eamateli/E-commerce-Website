@@ -7,7 +7,7 @@ from django.contrib import messages
 from store.models import Product
 
 
-def orders(request):
+def orders(request, pk):
     if request.user.is_authenticated and request.user.is_superuser:
         order = Order.objects.get(id=pk)     #Get order
         items = OrderItem.objects.filter(order=pk)   #Get the order items
