@@ -9,7 +9,14 @@ from store.models import Product
 
 def orders(request):
     if request.user.is_authenticated and request.user.is_superuser:
-        return render(request, 'payment/orders.html', {})
+        order = Order.objects.get(id=pk)     #Get order
+        items = OrderItem.objects.filter(order=pk)   #Get the order items
+        
+        
+        return render(request, 'payment/orders.html', {"order":order, "items":items})
+      
+    
+    
     else:
         messages.success(request, "Access Denied")
         return redirect ('home')
