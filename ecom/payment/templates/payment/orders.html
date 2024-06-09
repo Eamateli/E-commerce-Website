@@ -28,14 +28,14 @@
                          {% if not order.shipped %}
                          <form method="POST">
                           {% csrf_token %}
-                          <input type="hidden" name="shipping_status" value="True">
+                          <input type="hidden" name="shipping_status" value="true">
                            <button type="submit" class="btn btn-success">Mark as Shipped</button>
                            </form>
 
                           {% else %}
                           <form method="POST">
                             {% csrf_token %}
-                            <input type="hidden" name="shipping_status" value="False">
+                            <input type="hidden" name="shipping_status" value="false">
                              <button type="submit" class="btn btn-danger">Mark as NOT Shipped</button>
                              </form>
   
