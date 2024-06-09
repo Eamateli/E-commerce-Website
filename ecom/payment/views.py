@@ -5,6 +5,7 @@ from payment.models import ShippingAddress, Order, OrderItem
 from django.contrib.auth.models import User
 from django.contrib import messages
 from store.models import Product
+import datetime
 
 
 def orders(request, pk):
@@ -16,7 +17,8 @@ def orders(request, pk):
             status = request.POST['shipping_status']
             if status == "true":     #Check if true or false
                 order = Order.objects.filter(id=pk)   #Get the order
-                order.update(shipped=True)   #Update the status
+                now = datetime.datetime.now()
+                order.update(shipped=True, date_shipped=now)   #Update the status
             else:
                 order = Order.objects.filter(id=pk)   
                 order.update(shipped=False)   
