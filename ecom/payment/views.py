@@ -15,13 +15,13 @@ def orders(request, pk):
         if request.POST:
             status = request.POST['shipping_status']
             if status == "true":     #Check if true or false
-                order = Order.objec.filter(id=pk)   #Get the order
+                order = Order.objects.filter(id=pk)   #Get the order
                 order.update(shipped=True)   #Update the status
             else:
-                order = Order.objec.filter(id=pk)   
+                order = Order.objects.filter(id=pk)   
                 order.update(shipped=False)   
-        messages.success(request, "Shipping status updated.")
-        return redirect('home')
+            messages.success(request, "Shipping status updated.")
+            return redirect('home')
                 
                 
                 
