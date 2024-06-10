@@ -4,7 +4,7 @@ from payment.forms import ShippingForm, PaymentForm
 from payment.models import ShippingAddress, Order, OrderItem
 from django.contrib.auth.models import User
 from django.contrib import messages
-from store.models import Product
+from store.models import Product, Profile
 import datetime
 
 
@@ -114,29 +114,30 @@ def process_order(request):
             if key == "session_key " :
                 del request.session[key]
                 
+        current_user = Profile.objects.filter(user__id=request.user.id)   #Delete cart from DB (old_car field)
+        current_user.update(old_cart="")  #Delete shopping cart in DB (old_cart field)
             
+        messages.success(request, "Order Placed!")
+        return redirect ('home')
             
-            messages.success(request, "Order Placed!")
-            return redirect ('home')
-            
-        else:
-            create_order = Order(full_name=full_name, email=email, shipping_address=shipping_address, amount_paid=amount_paid)
-            create_order.save()
+    else:
+        create_order = Order(full_name=full_name, email=email, shipping_address=shipping_address, amount_paid=amount_paid)
+        create_order.save()
             
             
             #Add order items
-            order_id = create_order.pk #Get order info
-            for product in cart_products():
-                product_id = product.id  #Get product id
-                if product.is_sale:  #Get product price
-                    price = product.sale_price
-                else:
-                    price = product.price
+        order_id = create_order.pk #Get order info
+        for product in cart_products():
+             product_id = product.id  #Get product id
+             if product.is_sale:  #Get product price
+                price = product.sale_price
+             else:
+                price = product.price
                     
-            for key,value in quantities().items(): #Get quantity 
-                if int(key) == product.id:
-                    create_order_item = OrderItem(order_id=order_id, product_id=product_id,quantity=value, price=price)
-                    create_order_item.save()
+    for key,value in quantities().items(): #Get quantity 
+        if int(key) == product.id:
+            create_order_item = OrderItem(order_id=order_id, product_id=product_id,quantity=value, price=price)
+            create_order_item.save()
                     
         for key in list(request.session.keys()):               #Delete cart       
             if key == "session_key " :
