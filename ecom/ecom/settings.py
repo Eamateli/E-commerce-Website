@@ -12,13 +12,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 #Load environamental variables 
-# load_dotenv()
+load_dotenv()
 
 # password DB
-DB_PASSWORD_YO = os.environ['DB_PASSWORD_YO']
+# DB_PASSWORD_YO = os.environ['DB_PASSWORD_YO']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-5sifm367+i+*tdopzz+)0s&h8lqbc7w3ow=!bgy-9%##2j9=$m
 DEBUG = True
 
 ALLOWED_HOSTS = ['ee-commerce-website-production-5777.up.railway.app', 'https://e-commerce-website-production-5777.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://e-commerce-website-production-5777.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://e-commerce-website-production-b123.up.railway.app']
 
 
 # Application definition
@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': DB_PASSWORD_YO,
+        'PASSWORD': os.environ['DB_PASSWORD_YO'],
         'HOST': 'monorail.proxy.rlwy.net',
         'PORT': '29533',
         

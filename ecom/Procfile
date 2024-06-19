@@ -1,9 +1,5 @@
 web: gunicorn store.wsgi --log-file 
-web: gunicorn cart.wsgi --log-file 
-web: gunicorn payment.wsgi --log-file 
-web_store: python manage.py migrate && gunicorn ecom.store.wsgi --log-file 
-web_cart: python manage.py migrate && gunicorn ecom.cart.wsgi --log-file 
-web_payment: python manage.py migrate && gunicorn ecom.payment.wsgi --log-file 
+
 
 
 
