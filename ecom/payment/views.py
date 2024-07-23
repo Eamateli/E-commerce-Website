@@ -211,6 +211,9 @@ def billing_info(request):
 def payment_success(request):
     return render(request, "payment/payment_success.html", {})
 
+def payment_failed(request):
+    return render(request, "payment/payment_failed.html", {})
+
 
 def checkout(request):
     cart = Cart(request)
