@@ -183,7 +183,7 @@ def billing_info(request):
             
         }
         #Paypal button
-        paypal_form = PayPalPaymentsForm(inital=paypal_dict)
+        paypal_form = PayPalPaymentsForm(initial=paypal_dict)
         
         
         
