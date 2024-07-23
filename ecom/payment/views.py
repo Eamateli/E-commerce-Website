@@ -167,6 +167,27 @@ def billing_info(request):
         #Creat a session with Shipping info
         my_shipping = request.POST
         request.session['my_shipping'] = my_shipping
+        #Get the host
+        host = request.get_host()
+        #Paypal form and Dictionary
+        paypal_dict = {
+            'business': settings.PAYPAL_RECEIVERVER_EMAIL,
+            'amount': totals,
+            'item_name': 'Book Order',
+            'no_shipping': '2',
+            'invoice': str(uuid.uuid4()),
+            'currency_code':'USD',
+            'notify_url': 'https://{}{}'.format(host, reverse("paypal-ipn")),
+            'return_url': 'https://{}{}'.format(host, reverse("payment_success")),
+            'cancel_return': 'https://{}{}'.format(host, reverse("payment_failed")),
+            
+            
+        }
+        
+        
+        
+        
+        
         #Is user logged in 
         if request.user.is_authenticated:
             billing_form = PaymentForm()
