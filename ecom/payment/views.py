@@ -186,9 +186,6 @@ def billing_info(request):
         paypal_form = PayPalPaymentsForm(initial=paypal_dict)
         
         
-        
-        
-        
         #Is user logged in 
         if request.user.is_authenticated:
             billing_form = PaymentForm()
