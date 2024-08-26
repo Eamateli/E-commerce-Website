@@ -161,3 +161,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PAYPAL_TEST = True
 PAYPAL_RECEIVERVER_EMAIL = 'business@testdjangoapp.com'
+# APP_NAME = "E-Commerece"
