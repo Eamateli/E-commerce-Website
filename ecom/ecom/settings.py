@@ -19,6 +19,7 @@ load_dotenv()
 
 # password DB
 # DB_PASSWORD_YO = os.environ['DB_PASSWORD_YO']
+DB_PASSWORD_YO = os. environ.get('DB_PASSWORD_YO')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,8 +34,8 @@ SECRET_KEY = 'django-insecure-5sifm367+i+*tdopzz+)0s&h8lqbc7w3ow=!bgy-9%##2j9=$m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://e-commerce-shop.online','e-commerce-shop.online', 'e-commerce-website-production-5777.up.railway.app', 'https://e-commerce-website-production-5777.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://e-commerce-shop.online', 'https://e-commerce-website-production-5777.up.railway.app']
+ALLOWED_HOSTS = ['https://e-commerce-shop.online','e-commerce-shop.online', 'e-commerce-website-production-5777.up.railway.app', 'https://e-commerce-website-production-5777.up.railway.app', 'localhost','a505-2a02-586-b631-a3b5-9087-cac5-2d7f-5729.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://e-commerce-shop.online', 'https://e-commerce-website-production-5777.up.railway.app','https://a505-2a02-586-b631-a3b5-9087-cac5-2d7f-5729.ngrok-free.app']
 
 
 # Application definition
@@ -161,4 +162,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PAYPAL_TEST = True
 PAYPAL_RECEIVERVER_EMAIL = 'business@testdjangoapp.com'
-PAYPAL_APP_NAME = "E-Commerece"
+# PAYPAL_APP_NAME = "E-Commerece"
