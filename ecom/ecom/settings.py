@@ -34,8 +34,8 @@ SECRET_KEY = 'django-insecure-5sifm367+i+*tdopzz+)0s&h8lqbc7w3ow=!bgy-9%##2j9=$m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://e-commerce-shop.online','e-commerce-shop.online', 'e-commerce-website-production-5777.up.railway.app', 'https://e-commerce-website-production-5777.up.railway.app', 'localhost','a505-2a02-586-b631-a3b5-9087-cac5-2d7f-5729.ngrok-free.app']
-CSRF_TRUSTED_ORIGINS = ['https://e-commerce-shop.online', 'https://e-commerce-website-production-5777.up.railway.app','https://a505-2a02-586-b631-a3b5-9087-cac5-2d7f-5729.ngrok-free.app']
+ALLOWED_HOSTS = ['https://e-commerce-shop.online','e-commerce-shop.online', 'e-commerce-website-production-5777.up.railway.app', 'https://e-commerce-website-production-5777.up.railway.app', 'localhost','4f7d-2a02-586-b631-a3b5-4c77-b9f7-3fe1-5998.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://e-commerce-shop.online', 'https://e-commerce-website-production-5777.up.railway.app','https://4f7d-2a02-586-b631-a3b5-4c77-b9f7-3fe1-5998.ngrok-free.app']
 
 
 # Application definition
