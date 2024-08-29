@@ -167,6 +167,11 @@ def billing_info(request):
         #Creat a session with Shipping info
         my_shipping = request.POST
         request.session['my_shipping'] = my_shipping
+        full_name = my_shipping['shipping_full_name']
+        email = my_shipping['shipping_email']
+        #Create shipping address from session info 
+        shipping_address = f"{my_shipping['shipping_address1']}\n{my_shipping['shipping_address2']}\n{my_shipping['shipping_city']}\n{my_shipping['shipping_state']}\n{my_shipping['shipping_zipcode']}\n{my_shipping['shipping_country']}"
+        amount_paid = totals
         #Get the host
         host = request.get_host()
         #Create Invoice Number
